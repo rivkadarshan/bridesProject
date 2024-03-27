@@ -90,10 +90,22 @@ async onSave(): Promise<void> {
     dialogRef.afterClosed().subscribe(result =>{
       console.log("closed")
       this.bridejewleryServ.loadData()
-    })
+    })}
+    else{
+      const dialogRef = this.dialog.open(NewJewleryComponent, {
+        data: {id: this.bride.brideid}
+      })
+      dialogRef.componentInstance.onCreateNewBrideJewelry.subscribe(()=>{    
+         this.ngOnInit()
+      })
+      dialogRef.afterClosed().subscribe(result =>{
+        console.log("closed")
+        this.bridejewleryServ.loadData()
+      })
+    }
   }
 
 
 }
-}
+
 

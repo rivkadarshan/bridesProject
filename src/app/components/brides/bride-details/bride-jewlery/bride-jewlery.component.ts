@@ -4,7 +4,6 @@ import { Bride } from 'src/app/classes/bride';
 import { BrideJewlery } from 'src/app/classes/BrideJewelry';
 import { Jewelry } from 'src/app/classes/Jewelry';
 import { bridejewleryService } from 'src/app/services/bridejewleryService.services';
-import { jewleryService } from 'src/app/services/jewlery.services';
 import { NewJewleryComponent } from '../new-jewlery/new-jewlery.component';
 import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 
@@ -45,14 +44,13 @@ export class BrideJewleryComponent implements OnInit {
       this.refresh()
     })
   }
-  
+
+  //Loading data for a jewelry array for the current bride
   refresh(){
-    // טעינת נתונים למערך תכשיטים לכלה הנוכחית
     if (this.bride.brideid != 0)
       this.bridejewleryServ.getById(this.bride?.brideid).subscribe(
         (data) => {
           this.jewelry = data
-          if(this.jewelry[0].ischoose!=undefined){ }
         },
         e => { alert("error") }
       );
@@ -75,5 +73,12 @@ export class BrideJewleryComponent implements OnInit {
   {
     alert("updateBrideJewerley")
   }
-
+  saveChanges()
+  {
+    alert("save changes")
+  }
+  onChangeCheckBox()
+  {
+    alert("on change check box")
+  }
 }

@@ -1,5 +1,6 @@
 <!-- <h3>החתונה עוד {{}}</h3> -->
 <h3 class="h1Koteret"><h3>כלה: {{bride.bridename}} ,חתן: {{bride.groomname}}</h3><b>רשימת התכשיטים לבחירה</b></h3>
+<button class="styleButton" title="שמירת שינויים" (click)="saveChanges()"><mat-icon>add</mat-icon>שמירת שינויים</button>
 <button class="styleButton" title="הוספת תכשיט" (click)="openDialog()"><mat-icon>add</mat-icon>הוספת תכשיט</button>
 <div class="container">
     <table *ngIf="jewelry.length!=0" class="table table-hover">
@@ -15,6 +16,7 @@
       </thead>
       <tbody id="brideJewelryTable">   
         <tr *ngFor="let j of jewelry" >
+          <input type="checkbox" (change)="onChangeCheckBox()">
          <td>
           <mat-icon *ngIf="j.ischoose">done_outline</mat-icon>
           <mat-icon *ngIf="!j.ischoose">clear</mat-icon>
