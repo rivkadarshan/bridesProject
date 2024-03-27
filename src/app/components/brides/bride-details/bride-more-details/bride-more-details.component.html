@@ -1,4 +1,5 @@
 
+<button  class="cancelButton" title="ביטול" (click)="onCancel()"><mat-icon>close</mat-icon></button>
 <h3 class="h1Koteret" *ngIf="searchOrNew==='new'">הוספת כלה</h3>
 <h3 class="h1Koteret" *ngIf="searchOrNew==='search'">פרטי כלה</h3>
 <button class="styleButton" *ngIf="searchOrNew=='search'" title="עריכה" (click)="onupdate()"><mat-icon>edit</mat-icon>עריכה</button>

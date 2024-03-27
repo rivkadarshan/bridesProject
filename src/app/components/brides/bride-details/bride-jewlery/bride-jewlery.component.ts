@@ -1,11 +1,12 @@
 import { Component, Inject, Input, OnInit, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Bride } from 'src/app/classes/bride';
 import { BrideJewlery } from 'src/app/classes/BrideJewelry';
 import { Jewelry } from 'src/app/classes/Jewelry';
 import { bridejewleryService } from 'src/app/services/bridejewleryService.services';
 import { NewJewleryComponent } from '../new-jewlery/new-jewlery.component';
 import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-bride-jewlery',
@@ -14,14 +15,17 @@ import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confir
 })
 
 export class BrideJewleryComponent implements OnInit {
-  public jewelry: BrideJewlery[] = []
-  public selectJewelry: Array<Jewelry> = []
-  sumbBudject:number=0
+  [x: string]: any;
+  public bridejewelry: BrideJewlery[] = [];
+  public selectJewelry: Array<Jewelry> = [];
   date:Date=new Date;
-  public sumBuject:number=0;
+  protected Isdifferent:boolean=false;
   @Input() public bride = new Bride(0, "", "", "", "", new Date, new Date, 0,"",0,"");
 
-  constructor(private bridejewleryServ: bridejewleryService, private dialog: MatDialog,@Inject(MAT_DIALOG_DATA) public dialogData: { bride: Bride } ) 
+  constructor(private bridejewleryServ: bridejewleryService,
+              private dialog: MatDialog,
+              private dialogRef: MatDialogRef<ConfirmDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public dialogData: { bride: Bride } ) 
     {
       if (dialogData && dialogData.bride) 
         this.bride = dialogData.bride;
@@ -50,7 +54,7 @@ export class BrideJewleryComponent implements OnInit {
     if (this.bride.brideid != 0)
       this.bridejewleryServ.getById(this.bride?.brideid).subscribe(
         (data) => {
-          this.jewelry = data
+          this.bridejewelry = data
         },
         e => { alert("error") }
       );
@@ -75,10 +79,46 @@ export class BrideJewleryComponent implements OnInit {
   }
   saveChanges()
   {
-    alert("save changes")
+    console.log(this.bridejewelry)
+  this.bridejewleryServ.updateListBrideJewlery(this.bridejewelry).subscribe(
+    (response) => {
+      const dialogRef = this.dialog.open(AlertDialogComponent, {
+        data:'השינויים נשמרו בהצלחה'
+      })
+      this.dialogRef.close();
+    },
+    (error) => {
+      const dialogRef = this.dialog.open(AlertDialogComponent, {
+        data:error
+      })
+      this.dialogRef.close();
+      // Handle error
+      console.error("Error saving changes:", error);
+    }
+    
+  );    
   }
-  onChangeCheckBox()
-  {
-    alert("on change check box")
-  }
+
+  onChoiceOrNot(j: BrideJewlery) {
+    this.Isdifferent=true;
+    console.log("Before toggle:",this.bridejewelry);
+    console.log("Before toggle:", j.ischoose);
+    console.log("After toggle:", j.ischoose);
+    console.log("After toggle:", this.bridejewelry);
+  } 
+  onCancel(): void {
+    if(this.Isdifferent===true)
+    {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data:'אתה מעונין לשמור את השינויים שביצעת?'
+      })
+      dialogRef.componentInstance.onYes.subscribe(() => { 
+
+        this.saveChanges();
+      })
+    }
+    this.Isdifferent=false;
+    this.dialogRef.close(); // Close the dialog
+}
+
 }

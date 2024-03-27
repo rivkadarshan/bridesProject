@@ -1,6 +1,3 @@
-import { Jewelry } from "./Jewelry";
-import { Bride } from "./bride";
-
 export class BrideJewlery
 {
    constructor(
@@ -10,7 +7,7 @@ export class BrideJewlery
     public jewelryname:string,
     public budget:number,
     public sumtopay:number,
-    public ischoose:boolean=false,
+    public ischoose:boolean,
     public color:string,
     public descriptionBridejewelry:string,
    ) {}

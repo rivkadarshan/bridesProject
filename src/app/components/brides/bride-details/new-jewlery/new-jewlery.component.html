@@ -1,4 +1,7 @@
-<h2>הוספת תכשיט חדש</h2>
+<button  class="cancelButton" title="ביטול" (click)="onCancel()"><mat-icon>close</mat-icon></button>
+<h2 class="title">הוספת תכשיט חדש</h2>
+<button class="styleButton" title="הוספה" (click)="onCreate()"><mat-icon>save</mat-icon>שמירה</button>
+
 <div id="addNewJewelry">
 <form >
   <mat-form-field appearance="fill">
@@ -18,9 +21,6 @@
     <mat-label>הערות</mat-label>
     <input required matInput [(ngModel)]="newJewelry.descriptionBridejewelry" name="budget">
   </mat-form-field>
-  <label><input type="checkbox" [(ngModel)]="newJewelry.ischoose" name="ischoose"> האם בחרה</label>
+  <mat-slide-toggle [(ngModel)]="newJewelry.ischoose" name="ischoose">האם בחרה?</mat-slide-toggle> 
 </form>
-  
-<button mat-icon-button title="הוספה" (click)="onCreate()"><mat-icon>add</mat-icon></button>
-<button mat-icon-button title="ביטול" (click)="onCancel()"><mat-icon>close</mat-icon></button>
 </div>

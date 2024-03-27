@@ -1,9 +1,13 @@
 <!-- <h3>החתונה עוד {{}}</h3> -->
-<h3 class="h1Koteret"><h3>כלה: {{bride.bridename}} ,חתן: {{bride.groomname}}</h3><b>רשימת התכשיטים לבחירה</b></h3>
-<button class="styleButton" title="שמירת שינויים" (click)="saveChanges()"><mat-icon>add</mat-icon>שמירת שינויים</button>
+<button class="cancelButton" title="ביטול" (click)="onCancel()">
+  <mat-icon>close</mat-icon>
+</button>
+<h2 class="title">רשימת התכשיטים לבחירה</h2>
+<h2 class="title">כלה: {{bride.bridename}} ,חתן: {{bride.groomname}}</h2>
 <button class="styleButton" title="הוספת תכשיט" (click)="openDialog()"><mat-icon>add</mat-icon>הוספת תכשיט</button>
+<button class="styleButton" title="שמירת שינויים" (click)="saveChanges()"><mat-icon>save</mat-icon>שמירת שינויים</button>
 <div class="container">
-    <table *ngIf="jewelry.length!=0" class="table table-hover">
+    <table *ngIf="bridejewelry.length!=0" class="table table-hover">
       <thead>
         <tr>
           <th>בחרה?</th>
@@ -15,12 +19,8 @@
         </tr>
       </thead>
       <tbody id="brideJewelryTable">   
-        <tr *ngFor="let j of jewelry" >
-          <input type="checkbox" (change)="onChangeCheckBox()">
-         <td>
-          <mat-icon *ngIf="j.ischoose">done_outline</mat-icon>
-          <mat-icon *ngIf="!j.ischoose">clear</mat-icon>
-        </td>
+        <tr *ngFor="let j of bridejewelry" >
+        <td><mat-slide-toggle [(ngModel)]="j.ischoose" (change)="onChoiceOrNot(j)"></mat-slide-toggle> </td>
         <td>{{j.jewelryname}}</td>
           <td [ngStyle]="{'color':j.budget }" >{{j.budget}}</td>
           <td>{{j.descriptionBridejewelry}}</td>
@@ -28,11 +28,10 @@
           <button mat-icon-button title="עדכון" (click)="OnUpdateBrideJewrely(j.bridejewelryid)"><mat-icon>edit</mat-icon></button>
           <button mat-icon-button title="מחיקה" (click)="onDelete(j.bridejewelryid)"><mat-icon>delete_sweep</mat-icon></button>
         </tr> 
-
       </tbody>
     </table>
     <label>{{selectJewelry}}</label>
-    <h3 id="h1ListJewelry" *ngIf="jewelry.length===0">לא נמצא מידע</h3>
+    <h3 id="h1ListJewelry" *ngIf="bridejewelry.length===0">לא נמצא מידע</h3>
 </div>
 
   

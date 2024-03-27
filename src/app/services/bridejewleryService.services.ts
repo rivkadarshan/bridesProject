@@ -10,10 +10,10 @@ import { BrideJewlery } from '../classes/BrideJewelry';
 
 export class bridejewleryService {
   url="https://localhost:7111/api/BridejewelryControler/"
+  public brideJewelry:Array<BrideJewlery>=[]
 
   constructor(private http:HttpClient,private jewleryServ:jewleryService) { }
 
-  public brideJewelry:Array<BrideJewlery>=[]
   getAll():Observable<Array<BrideJewlery>>
   {  
     return this.http.get<Array<BrideJewlery>>(`${this.url}GetAll`)
@@ -54,5 +54,8 @@ export class bridejewleryService {
   refreshList(list:Array<BrideJewlery>)
   {
     this.brideJewelry = list;
+  }
+  updateListBrideJewlery(listBrideJewlery: Array<BrideJewlery>): Observable<number> {
+    return this.http.put<number>(`${this.url}UpdateListBrideJewelry`, listBrideJewlery);
   }
 }

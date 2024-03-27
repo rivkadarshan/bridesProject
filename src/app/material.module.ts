@@ -8,13 +8,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatGridList, MatGridListModule} from '@angular/material/grid-list';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatTableModule} from '@angular/material/table'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -38,6 +38,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
               MatNativeDateModule,
               MatDatepickerModule,
               MatTableModule,
+              MatSlideToggleModule
                         ]
 })
 export class MaterialModule {

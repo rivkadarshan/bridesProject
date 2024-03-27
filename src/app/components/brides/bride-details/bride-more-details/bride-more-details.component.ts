@@ -104,6 +104,9 @@ async onSave(): Promise<void> {
       })
     }
   }
+  public onCancel() {
+    this.dialogRef.close();
+  }
 
 
 }

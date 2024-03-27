@@ -1,0 +1,21 @@
+#logInComponent{
+    background-color: #F4EBD0;
+    padding: 2rem;
+    border: 1rem solid white;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;   
+}
+.inputLogo{
+    background-color: whitesmoke;
+    width: 25rem;
+    height: 5rem;
+}
+.custom-file-input {
+    border-bottom: 1px solid black; /* קו מסגרת שחור מלמטה */
+}
+.custom-file-label {
+    margin-bottom: 0;
+}

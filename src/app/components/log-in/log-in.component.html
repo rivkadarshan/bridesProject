@@ -1,0 +1,10 @@
+<form (ngSubmit)="login()" #loginForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="Username" name="username" ngModel required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" name="password" ngModel required>
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="rememberMe">Remember Me</mat-checkbox>
+  <button mat-raised-button color="primary" type="submit">Login</button>
+</form>

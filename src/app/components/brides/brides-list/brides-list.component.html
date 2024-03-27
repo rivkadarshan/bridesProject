@@ -1,10 +1,11 @@
 
 <button class="additionButton" title="הוספת כלה" (click)="addNewBride()">הוספת כלה <mat-icon>group_add</mat-icon> </button>
-  <div id="searchId">  <input type="text" [(ngModel)]="searchName" placeholder="חיפוש לפי שם" (input)="onSearchName()">
-  <input type="text" [(ngModel)]="searchPhone" placeholder="חיפוש לפי טלפון" (input)="onSearchPhone()">
-</div>
+  <div class="searchContainer">
+     <input type="text" [(ngModel)]="searchName" placeholder="חיפוש לפי שם" (input)="onSearchName()">     
+     <input type="text" [(ngModel)]="searchPhone" placeholder="חיפוש לפי טלפון" (input)="onSearchPhone()">
+  </div>
 <router-outlet></router-outlet>
-<h1>נמצאו: {{brides.length}}</h1>
+<h1 class="amountFound">נמצאו: {{brides.length}}</h1>
 <div class="container">
     <table class="table table-hover">
       <thead>
@@ -26,10 +27,11 @@
         <td>{{bride.bridephone}}</td>
         <td>{{bride.groomphone}}</td>
         <td>{{bride.descriptionBride}}</td>
-        <td  class="hovered-row-buttons"  *ngIf="hoveredRow === i">
+        <td  class="buttonInTableRow"  *ngIf="hoveredRow === i">
            <button mat-icon-button title="רשימת תכשיטים"(click)="onJewlery(bride)"><mat-icon>diamond</mat-icon></button>
            <button mat-icon-button title="פרטים נוספים" (click)="onMoreDetails(bride)"><mat-icon>manage_accounts</mat-icon></button>
            <button mat-icon-button title="מחיקת כלה" (click)="onDelete(bride.brideid)"><mat-icon>delete_sweep</mat-icon></button>
+           <button mat-icon-button title={{bride.descriptionBride}} (click)="onDelete(bride.brideid)"><mat-icon>content_copy</mat-icon></button>
        </td>
       </tr> 
     </tbody>

@@ -1,0 +1,52 @@
+<div id="logInComponent">
+    <h1>ברוכים הבאים למערכת החדשה שלכם</h1>
+    <h3>לפני שנתחיל אנחנו צריכים כמה פרטים</h3>
+  <form> 
+      <p>
+          <mat-form-field appearance="fill">
+            <mat-label>שם העסק</mat-label>
+            <input matInput maxlength="10" pattern='[0-9]*$' [(ngModel)]="shop.username" name="groomPhone">
+          </mat-form-field>
+      </p>
+    </form> 
+  
+    <form> 
+      <p>
+          <mat-form-field appearance="fill">
+            <mat-label>מספר הטלפון שלך</mat-label>
+            <input matInput maxlength="10"  [(ngModel)]="shop.username" name="bridePhone">
+            <mat-icon matSuffix>phone_enabled</mat-icon>
+          </mat-form-field>
+      </p>
+    </form>
+    <form> 
+      <p>
+          <mat-form-field appearance="fill">
+            <mat-label>כתובת</mat-label>
+            <input matInput maxlength="10"  [(ngModel)]="shop.username" name="bridePhone">
+            <mat-icon matSuffix><span class="material-symbols-outlined"> home </span></mat-icon>
+          </mat-form-field>
+      </p>
+    </form>
+    <form> 
+      <p>
+          <mat-form-field appearance="fill">
+            <mat-label>כתובת מייל</mat-label>
+            <input matInput maxlength="10"  [(ngModel)]="shop.username" name="bridePhone">
+            <mat-icon matSuffix>alternate_email</mat-icon>
+          </mat-form-field>
+      </p>
+    </form> 
+  <form class="inputLogo" (change)="onFileSelected($event)">
+    <div class="custom-file mb-3">
+      <label class="custom-file-label">
+        <input type="file" class="custom-file-input" id="customFile" name="filename" style="display: none;" (change)="onFileSelected($event)" accept="image/*">
+        <mat-icon matSuffix style="cursor: pointer;">upload</mat-icon>
+        <label>{{ selectedFileName }}</label>
+      </label>
+    </div>
+  </form>
+  
+  
+    <button class="okButton" (click)="onOk()" title="אישור ומעבר לשלב הבא">אישור</button>
+  </div>

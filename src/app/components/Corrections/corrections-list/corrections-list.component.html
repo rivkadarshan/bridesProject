@@ -1,0 +1,37 @@
+<button class="additionButton" title="תיקון חדש" (click)="addNewCorrction()">תיקון חדש<mat-icon>group_add</mat-icon> </button>
+  <div class="searchContainer">
+     <input type="text" [(ngModel)]="searchName" placeholder="חיפוש לפי שם" (input)="onSearchName()">     
+     <!-- <input type="text" [(ngModel)]="searchPhone" placeholder="חיפוש לפי טלפון" (input)="onSearchPhone()"> -->
+  </div>
+<router-outlet></router-outlet>
+<h1 class="amountFound">נמצאו: {{corrections.length}}</h1>
+<div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>תאריך הוספה</th>
+          <th>קוד תיקון</th>
+          <th>מוכן</th>
+          <th>נמסרה הודעה</th>
+          <th>הערות</th>
+        </tr>
+      </thead>
+    <tbody>         
+      <tr class="rowOnTable" *ngFor="let correction of corrections; let i = index" (mouseenter)="setHoveredRow(i)" (mouseleave)="clearHoveredRow()">       
+        <td>{{correction.receivingDate|date : 'dd/MM/yyyy'}}</td> 
+        <td>{{correction.correctionId}}</td>
+        <td>{{correction.isReady}}</td>
+        <td>{{correction.isDeliveredMessage}}</td>
+        <td>{{correction.correctionDescription}}</td>
+        <td  class="buttonInTableRow"  *ngIf="hoveredRow === i">
+           <!-- <button mat-icon-button title="רשימת תכשיטים"(click)="onJewlery(bride)"><mat-icon>diamond</mat-icon></button>
+           <button mat-icon-button title="פרטים נוספים" (click)="onMoreDetails(bride)"><mat-icon>manage_accounts</mat-icon></button> -->
+           <button mat-icon-button title="מחיקת תיקון" (click)="onDelete(correction.correctionId)"><mat-icon>delete_sweep</mat-icon></button>
+           <button mat-icon-button title={{correction.correctionDescription}}><mat-icon>content_copy</mat-icon></button>
+       </td>
+      </tr> 
+    </tbody>
+  </table>
+  <h1 *ngIf="corrections.length===0">לא נמצאו רשומות</h1>
+</div>
+

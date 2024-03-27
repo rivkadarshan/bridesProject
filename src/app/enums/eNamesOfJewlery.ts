@@ -1,4 +1,3 @@
-// שימוש ב-TypeScript Generics
 export const eNamesOfJewlery = {
     Value: 'כללי',
     Value1: 'שרשרת',
