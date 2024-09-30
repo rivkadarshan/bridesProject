@@ -24,15 +24,7 @@
         </mat-form-field>
     </p>
   </form> 
-  <form> 
-    <p>
-        <mat-form-field appearance="fill">
-          <mat-label>טלפון חתן</mat-label>
-          <input [readonly]="updateOrReadonly" matInput maxlength="10" pattern='[0-9]*$' [(ngModel)]="bride.groomphone" value={{bride.groomphone}} name="groomPhone">
-          <mat-icon matSuffix>phone_enabled</mat-icon>
-        </mat-form-field>
-    </p>
-  </form> 
+
   <form> 
     <p>
         <mat-form-field appearance="fill">
@@ -41,7 +33,16 @@
           <mat-icon matSuffix>phone_enabled</mat-icon>
         </mat-form-field>
     </p>
-  </form> 
+  </form>
+  <form> 
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>טלפון חתן</mat-label>
+          <input [readonly]="updateOrReadonly" matInput maxlength="10" pattern='[0-9]*$' [(ngModel)]="bride.groomphone" value={{bride.groomphone}} name="groomPhone">
+          <mat-icon matSuffix>phone_enabled</mat-icon>
+        </mat-form-field>
+    </p>
+  </form>  
   <form> 
     <mat-form-field appearance="fill">
     <mat-label>תאריך חתונה</mat-label>

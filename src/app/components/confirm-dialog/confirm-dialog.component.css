@@ -2,11 +2,8 @@
     background-color: #F4EBD0;
     padding: 2rem;
     border: 1rem solid white;
-}
-#confirmDialogComponent {
     justify-content: center;
-  }
-  
+}
   #confirmDialogComponent button {
     margin: 0 5px; /* כדי להוסיף מרווח בין הכפתורים */
   }

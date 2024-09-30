@@ -6,6 +6,8 @@ export const eNamesOfJewlery = {
     Value4: 'טבעת קידושין',
     Value5: 'טבעת זרקון',
     Value6: 'טבעת קישוט',
+    value7: 'פנינים',
+    value8:'שעון',
   } as const;
   
   export type JewelryNameType = typeof eNamesOfJewlery[keyof typeof eNamesOfJewlery];

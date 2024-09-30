@@ -1,17 +1,39 @@
-<!-- <mat-form-field appearance="fill">
-    <mat-label>שם</mat-label>
-    <input required matInput [(ngModel)]="newJewelry.descriptionBridejewelry" name="budget">
-</mat-form-field>
+
+<button  class="cancelButton" title="ביטול" (click)="onCancel()"><mat-icon>close</mat-icon></button>
+<h2 class="title">הוספת תיקון חדש</h2>
+
+<button class="styleButton" title="הוספה" (click)="onCreate()"><mat-icon>save</mat-icon>שמירה</button>
+<div id="NewCorrectionsComponent">
+<form>
+      <mat-form-field appearance="fill">
+        <mat-label>שם</mat-label>
+        <input matInput placeholder="" [(ngModel)]="CurrectionSelect"  name="brideName">
+        <mat-icon matSuffix>person_outline</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>טלפון</mat-label>
+        <input  matInput maxlength="10" pattern='[0-9]*$' [(ngModel)]="CurrectionSelect" name="groomPhone">
+        <mat-icon matSuffix>phone_enabled</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+    <mat-label>תאריך</mat-label>
+    <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 <mat-form-field appearance="fill">
-    <mat-label>טלפון</mat-label>
-    <input required matInput [(ngModel)]="newJewelry.descriptionBridejewelry" name="budget">
-</mat-form-field>
-<mat-form-field appearance="fill">
-    <mat-label>תאור</mat-label>
-    <mat-select [(ngModel)]="newJewelry.jewelryname" name="selectJewelry">
+    <mat-label>נמסר ל_</mat-label>
+    <mat-select [(ngModel)]="Supliers" name="selectSuplier">
       <mat-option value="-1"> </mat-option>
-      <mat-option *ngFor="let jewelryName of jewelryNames" [value]="jewelryName">
-        {{ jewelryName }}
+      <mat-option *ngFor="let Suplier of Supliers" [value]="Suplier">
+        {{ Suplier }}
       </mat-option>
     </mat-select>
-  </mat-form-field>   -->
+</mat-form-field> 
+<mat-form-field appearance="fill">
+    <mat-label>נמסר הודעה</mat-label>
+    <input required matInput [(ngModel)]="CurrectionSelect.isDeliveredMessage" name="budget">
+</mat-form-field>
+</form>
+</div>

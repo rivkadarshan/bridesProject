@@ -4,6 +4,7 @@ import { CorrectionService } from 'src/app/services/correction.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { NewCorrectionsComponent } from '../new-corrections/new-corrections.component';
+import { UpdateCorrectionReturnComponent } from '../update-correction-return/update-correction-return.component';
 @Component({
   selector: 'app-corrections-list',
   templateUrl: './corrections-list.component.html',
@@ -12,9 +13,10 @@ import { NewCorrectionsComponent } from '../new-corrections/new-corrections.comp
 export class CorrectionsListComponent {
   public corrections:Correction[] =[]
   public originalCorrection: Correction[] = [];
-  public CurrectionSelect:Correction= new Correction(0,0,0,new Date(),0,false,"","",false);
+  public CurrectionSelect:Correction= new Correction(0,0,0,new Date(),0,"","",false,"","",false,"",new Date(),new Date());
   hoveredRow: number | null = null;
   public searchName: string = '';
+  public searchId:string='';
   public searchPhone: string = '';
 
   clickedRows = new Set<Correction>();
@@ -37,7 +39,7 @@ export class CorrectionsListComponent {
 
   public addNewCorrction() {
      const dialog = this.dialog.open(NewCorrectionsComponent, {
-      data: { correction: new Correction(0,0,0,new Date(),0,false,"","",false), searchOrNew: "new" }
+      data: { correction: new Correction(0,0,0,new Date(),0,"", "",false,"","",false,"",new Date(),new Date()), searchOrNew: "new" }
     }); 
     // dialog.componentInstance.onCreateNewBride.subscribe(() => {
     //   this.brideServ.loadData();
@@ -58,16 +60,6 @@ export class CorrectionsListComponent {
     })
       this.ngOnInit()
     }
-    // public onMoreDetails(bride: Bride) {
-    //   const dialogRef = this.dialog.open(BrideMoreDetailsComponent, {
-    //     data: { bride: bride,searchOrNew:'search' }
-    //   });
-    // }
-    // public onJewlery(bride: Bride) {
-    //   const dialogRef = this.dialog.open(BrideJewleryComponent, {
-    //     data: { bride: bride }
-    //   });
-    // }
     setHoveredRow(index: number): void {
       this.hoveredRow = index;
     }
@@ -76,7 +68,7 @@ export class CorrectionsListComponent {
       this.hoveredRow = null;
     }
 
-    public filterBridesByName(): void {
+    public onSearchName(): void {
       if (this.searchName.trim() === '') {
         this.onClearSearchName();
         return;
@@ -86,31 +78,36 @@ export class CorrectionsListComponent {
       );
     }
 
-    public onSearchName(): void {
-      this.filterBridesByName();
+    public onSearchId():void{
+      if (this.searchId.trim() === '') {
+        this.onClearSearchName();
+        return;
+      }  
+      this.corrections = this.originalCorrection.filter(correction =>
+        correction.forHoeDeliveredMessage.includes(this.searchName) 
+      );
     }
-    
+    public onSearchPhone():void{
+      if (this.searchPhone.trim() === '') {
+        this.onClearSearchName();
+        return;
+      }  
+      this.corrections = this.originalCorrection.filter(correction =>
+        correction.forHoeDeliveredMessage.includes(this.searchName) 
+      );
+    }
+
     public onClearSearchName(): void {
       this.searchName = '';
       this.corrections = [...this.originalCorrection];
     }
 
-    // public filterBridesByPhone(): void {
-    //   if (this.searchPhone.trim() === '') {
-    //     this.onClearSearchByPhone();
-    //     return;
-    //   }  
-    //   this.brides = this.originalBrides.filter(bride =>
-    //     bride.bridephone.includes(this.searchPhone) || bride.groomphone.includes(this.searchPhone)
-    //   );
-    // }
-
-    // public onSearchPhone(): void {
-    //   this.filterBridesByPhone();
-    // }
-    
-    // public onClearSearchByPhone(): void {
-    //   this.searchPhone = '';
-    //   this.brides = [...this.originalBrides];
-    // }
+    public UpdateCorrectionReturn():void{
+      const dialog = this.dialog.open(UpdateCorrectionReturnComponent, {
+      }); 
+      // dialog.componentInstance.onCreateNewBride.subscribe(() => {
+      //   this.brideServ.loadData();
+      //   this.ngOnInit();
+      // });
+    }
 }

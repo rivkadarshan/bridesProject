@@ -17,6 +17,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { NewCorrectionsComponent } from './components/Corrections/new-corrections/new-corrections.component';
 import { CorrectionsListComponent } from './components/Corrections/corrections-list/corrections-list.component';
 import { RegisterOnTheSiteComponent } from './components/register-on-the-site/register-on-the-site.component';
+import { UpdateCorrectionReturnComponent } from './components/Corrections/update-correction-return/update-correction-return.component';
 
 
 
@@ -32,7 +33,8 @@ import { RegisterOnTheSiteComponent } from './components/register-on-the-site/re
     LogInComponent,
     NewCorrectionsComponent,
     CorrectionsListComponent,
-    RegisterOnTheSiteComponent
+    RegisterOnTheSiteComponent,
+    UpdateCorrectionReturnComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatTableModule} from '@angular/material/table'
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
